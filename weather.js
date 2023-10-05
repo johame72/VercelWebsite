@@ -12,3 +12,13 @@ fetch(endPoint)
     .catch(error => {
         console.error("Error fetching the weather data:", error);
     });
+
+// Initialize the map
+const map = L.map('weatherMap').setView([30.3422, -97.7970], 5); // Austin, TX coordinates and zoom level
+
+// Add a base map layer (for example, OpenStreetMap)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+// Add the weather layer
+const weatherLayer = `https://maps.openweathermap.org/maps/2.0/weather/1h/TA2/{z}/{x}/{y}?appid=5ad4601afb2e22f1d595b000914778bb`;
+L.tileLayer(weatherLayer).addTo(map);
